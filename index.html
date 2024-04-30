@@ -1,28 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Jersey+10&display=swap" rel="stylesheet">
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
     <title>Tamagotchi Mini Project - Rachel Ramoutar</title>
 </head>
-<body>
-    <h1>TamaTopia</h1>
-    <img>
-    <p>
-        <span class="scrollingBan">Welcome to TamaTopia! Where all your tamagotchi friends live! Have you been to the TamaTopia Pool? There's a really cute lifeguard who works there? ^.^</span>
-    </p>
-    <div>
-        <span>Hunger</span>
-        <span>Sleepiness</span>
-        <span>Boredom</span>
-        <span>Age</span>
-    </div>
-    <button id="foods">FEED ME</button>
-    <button id="sleeps">TIME FOR BED</button>
-    <button id="lolz">PLAY TIME</button>
-</body>
-</html>
 
+<body>
+    <div>
+        <h1>TamaTopia</h1>
+    </div>
+    <img>
+    <!-- <p>
+        <span class="marquee">Welcome to TamaTopia! Where all your tamagotchi friends live! Have you been to the TamaTopia Pool? There's a really cute lifeguard who works there? ^.^</span>
+    </p> -->
+    <div>
+        <img id="egg" src="./images/output-onlinegiftools.gif" alt="pixelated rainbow glowing egg" width="300px"
+            height="250px">
+
+        <img id="fox1" hidden src="./images/artbreeder-image-2024-04-27T18_40_58.489Z.png" alt="cute little fox with glowy ears" width="300px" height="250px"> 
+        <img id="fox2" hidden src="./images/artbreeder-image-2024-04-27T18_43_24.136Z.png" alt="little brown fox with pink and blue wings" width="300px" height="250px">
+        <img id="fox3" hidden src="./images/artbreeder-image-2024-04-27T18_51_11.477Z.png" alt="adult brown fox with pink wings" width="300px" height="250px"> 
+    </div>
+    <div id="thename"></div>
+    <div class="metrics">
+        <span id="hunger">Hunger: </span>
+        <span id="hungerNum" onclick="feedPet()">0</span>
+        <br><span id="sleepiness">Sleepiness: </span>
+        <span id="sleepinessNum" onclick="sleepPet()">0</span>
+        <br><span id="boredom">Boredom: </span>
+        <span id="boredomNum" onclick="playPet()">0</span>
+        <br><span id="age">Age: </span>
+        <span id="ageNum">0</span>
+    </div>
+    <div class="activityButtons">
+        <button id="awake1" onclick="feedPet()"><img
+                src="data:image/jpeg;base64,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ptKQSepNE/8ATI0/VeoEHZmuOquhxv8Ah1bh+uEO+LXD5LxO6IqoepVRfxez5XVfDL4T/H/Z36xS1UbPWexn6nhvzK4MdE1YdtVDbvkPwsvRB0OPJ/Eq2/thJPmXJ4ZfB9H9m/q9bKGP1qiMngw9Yf8ATdc/pHpMgbfqYnyni8iNv1PwC3NF0R0bc5JZ5uV2xj/SL/FdJo7VTR9LYsp4muGxz/xHeDnklWnHkjz4581FrKzTGk8oWPiiO9gMLLc5XZu8D4LpNXuiaNpD6yTrnberju1l/wAz/Wd8FIvpI9kF3hYeZVpD3bThHBv1KvOOTtW816notgiip2COJjWNGxkbQLeA2d6qWl3rbPdGzxO9XMjDdgsr1oxUVURAREQEREBERAREQEREBERAREQEREFrmA7QD4KwQAbLt7iQsqIMeB257vEA/RO374/iFkRBj7fvj+ISz/f8mhZEQYupvtc4/ut8lVkLRsAWREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREH/2Q=="
+                alt="dumpling" width="80px" height="80px"></button>
+        <button id="sleeps" onclick="sleepPet()"><img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbo5OAFFr5WE6JVQai7chUGnLUTnOqSmFukQ&s"
+                alt="sleepy puppy" width="80px" height="80px"></button>
+        <button id="awake2" onclick="playPet()"><img
+                src="https://img.freepik.com/free-vector/cute-girl-playing-with-cat-cartoon-character-hand-draw-art-illustration_56104-2278.jpg?w=996&t=st=1714228007~exp=1714228607~hmac=a0e333d2ad7a26c3f7a7a4eaff5913ccfb523050214ca1376af3bdc1db4d3314"
+                alt="Girl Playing with kitten" width="80px" height="80px"></button>
+    </div>
+    <div class="background">
+        <img src="./images/Art.gif" alt="flowers" />
+    </div>
+    <div>
+        <audio id="audioPlayer1" hidden controls src="./music/darren-curtis-grassy-plains.mp3">Sorry your
+            browser doesn't support this audio</audio>
+        <audio controls  hidden id="audioPlayer2"
+            src="./music/keys-of-moon-child-dreams.mp3">Sorry your browser doesn't support this audio</audio>
+    </div>
+</body>
+
+</html>
