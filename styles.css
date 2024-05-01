@@ -1,6 +1,7 @@
 body{
-  /* background: linear-gradient(#480ca8, #b5179e, #FF6BDB); */
-  background-repeat: repeat;
+margin:auto;
+height: 100%; 
+width: 100%; 
 }
 
 /* #sleeps{
@@ -11,6 +12,7 @@ body{
 .background{
   background-image: url("./images/Art.gif");
   opacity: 0.7;
+  background-size: auto;
 }
 
 h1{
@@ -19,7 +21,7 @@ h1{
     color:#FFFFFF;
     text-shadow: 8px 8px #000000;
     text-align: center;
-    margin: 20px; 
+    margin: 10px; 
 }
 
 .metrics{
@@ -48,4 +50,26 @@ h1{
 
 #fox1, #fox2, #fox3{
   margin-inline-start: 610px;
+}
+
+.hoverEffect {
+    animation-name: floating;
+    animation-iteration-count: infinite;
+    animation-duration: 3s;
+    animation-timing-function: ease-in-out;
+}
+
+
+@keyframes floating {
+  from {
+      transform: translate(0,0px)
+  }
+
+  65% {
+      transform: translate(0,15px)
+  }
+
+  to {
+      transform: translate(0,0px)
+  }
 }

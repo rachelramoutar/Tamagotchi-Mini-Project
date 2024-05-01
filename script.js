@@ -1,7 +1,7 @@
-// alert("Happy TamaGotcha Day! You just adopted your first TamaGotchi. Now, let's keep it alive!")
-const tamaGotchaName = document.querySelector('#thename');
+alert("Happy TamaGotcha Day! You just adopted your first TamaGotchi. Now, let's keep it alive!")
+const tamaGotchaName = document.querySelector("thename");
 
-// let egg = prompt("Congratulations! You have a beautiful baby egg ^.^ Let's give the baby a name", "");
+let egg = prompt("Congratulations! You have a beautiful baby egg ^.^ Let's give the baby a name", "");
 
 /* need to remove background from Gif egg*/
 const nightTime = "linear-gradient(to bottom, #0c0fa8, #37073a, #2e2c2d)";
@@ -30,10 +30,10 @@ let boredom = 0;
 let age = 0;
 
 
-// if(egg ==''){
-//     prompt("TamaGotchis need love. If you won't give them a name, please try another game.", "");
-//     tamaGotchaName.innerHTML = egg;
-// }
+if(egg ==''){
+    prompt("TamaGotchis need love. If you won't give them a name, please try another game.", "");
+    tamaGotchaName.innerHTML = egg;
+}
 
 // tamaGotchaName.innerHTML = egg;
 
@@ -49,104 +49,101 @@ const buttons = [{
 }
 ]
 
+
 function feedPet(){
     hunger--;
-    age += 1;
+    age += 0.25;
     hungerNum.innerText = hunger;
     ageNum.innerText = age; 
 };
 
 function sleepPet(){ 
     sleepiness--; 
-    age +=1; 
+    age +=0.25; 
     sleepinessNum.innerText = sleepiness; 
     ageNum.innerText = age; 
 };
 
 function playPet(){
     boredom--; 
-    age += 0.5; 
+    age += 0.25; 
     boredomNum.innerText = boredom; 
     ageNum.innerText = age; 
 }
 
 
-function petDeath (){ 
-    if (age === 10){
-        alert("Grief is the cost of love. Thank you for loving your tamagotchi for such a long time. It's in a better place now."
-        ); 
-    } else if (hunger === 10){ 
-        alert("Your tamagotchi died of hunger X.X"); 
-    } else if (boredom === 10){
-        alert("Time Management would've been good here. Your tamagotchi died of boredom");
-    } else if (sleepiness === 10){
-        alert("Why are you up so late all the time? Your tamagotchi died from lack of sleep.")
-    }
-};
+// function petDeath (){ 
+//     if (ageNum > 10){
+//         alert("Grief is the cost of love. Thank you for loving your tamagotchi for such a long time. It's in a better place now."
+//         ); 
+//     } else if (hungerNum > 10){ 
+//         alert("Your tamagotchi died of hunger X.X"); 
+//     } else if (boredomNum > 10){
+//         alert("Time Management would've been good here. Your tamagotchi died of boredom");
+//     } else if (sleepinessNum > 10){
+//         alert("Why are you up so late all the time? Your tamagotchi died from lack of sleep.")
+//     }
+// };
 
 
 egg.hidden=false;
 
-
 let timer1 = setInterval(function(){
     morph();
-    age++;
-}, 10000); 
+}, 5000); 
 
 function morph (){  
     console.log(age)
     if (age>=5){ 
         egg.hidden=true;
         fox1.hidden=false; 
+        fox2.hidden=true;
+        fox3.hidden=true;
         console.log("fox1");
-    } else{
-        egg.hidden=false; 
-    };
+    } 
 };
 
 let timer2 = setInterval(function(){
     morph2();
     age++
-}, 20000);
+}, 10000);
 
     function morph2 (){
         console.log(age)
        if (age>=10){
-        fox2.hidden=true; 
-        fox3.hidden=false; 
- } else {
-        fox2.hidden = false; 
- }
+        egg.hidden=true;
+        fox1.hidden=true; 
+        fox2.hidden=false;
+        fox3.hidden=true;
+ } 
 };
 
 let timer3 = setInterval(function(){
     morph3();
-}, 30000);
+}, 15000);
     function morph3 (){
         console.log(age)
        if (age>=15){
-        fox2.hidden=true; 
-        fox3.hidden=false; 
- } else {
-        fox2.hidden = false; 
- }
+        egg.hidden=true;
+        fox1.hidden=true; 
+        fox2.hidden=true;
+        fox3.hidden=false;
 };
-
-
-
-// audio1.play()
+    }
+// 
+audio1.play()
 
 document.body.style.background = dayTime; 
 function changeBackgroundColorForSleep() {
     document.body.style.background = nightTime; 
-    // audio1.pause()
-    // audio2.play()
+    audio1.pause()
+    audio2.play()
 }
 
 function changeBackgroundColorForAwake() {
     document.body.style.background = dayTime; 
-    // audio1.play()
-    // audio2.pause()
+    audio1.play()
+    audio2.pause()
 }
 sleepButton.addEventListener("click", changeBackgroundColorForSleep);
 awakeButton1.addEventListener("click", changeBackgroundColorForAwake);
